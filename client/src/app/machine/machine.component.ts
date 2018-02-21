@@ -35,7 +35,7 @@ export class MachineComponent implements OnInit, OnDestroy {
     this.MachineService.updateMachines(this.machines)
     .subscribe(machines => {
       this.socket.emit('machineUpdate', this.machines);
-      this.modals[i] = !this.modals[i];
+      this.modals[this.machines[i].id] = !this.modals[this.machines[i].id];
     });
   }
   
@@ -47,7 +47,7 @@ export class MachineComponent implements OnInit, OnDestroy {
     this.MachineService.updateMachines(this.machines)
     .subscribe(machines => {
       this.socket.emit('machineUpdate', this.machines);
-      this.modals[i] = false;
+      this.modals[this.machines[i].id] = false;
     });
   }
   

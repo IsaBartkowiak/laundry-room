@@ -10,7 +10,7 @@
 				<timer *ngIf="machine.status == 'nok'" (timerEnded)="setMachineAvailable(i)" units="Minutes|Seconds" end="{{machine.deadline}}"></timer>
 			</div>
 			<span class="massena-machine-add" 
-			(click)="modals[machine.id] = !modals[machine.id]" *ngIf="machine.status == 'ok'">
+			[(click)]="modals[machine.id] = !modals[machine.id]" *ngIf="machine.status == 'ok'">
 				Lancer une machine		
 			</span>
 		</div>
