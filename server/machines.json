@@ -1,0 +1,1 @@
+[{"id":1,"name":"Machine à laver","img":"machine-1.png","status":"nok","statusText":"Occupé","time":1519227175636,"deadline":1519229515636},{"id":2,"name":"Sèche linge","img":"machine-2.png","status":"nok","statusText":"Occupé","time":1519228116294,"deadline":1519229616294}]

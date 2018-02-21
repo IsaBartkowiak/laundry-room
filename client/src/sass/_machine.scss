@@ -1,0 +1,177 @@
+.massena-machine{
+	padding: 0 10px;
+	width: 50%;
+	display: inline-block;
+	font-size: initial;
+	text-align:center;
+	display: inline-block;
+	vertical-align: top;
+	@media (max-width: 768px) {
+		width: 100%;
+		font-size: 0;
+		padding: 5px 10px;
+	}
+	&-title{
+		margin: 8px 0;
+		font-size: 25px;
+		display:block;
+		font-size: 18px;
+		font-weight: 300;
+		@media (max-width: 768px) {
+			margin-top: 0;
+			margin-bottom: 5px;
+			font-size: 16px;
+		}
+	}
+	&-bg{
+		padding: 30px;
+		position: relative;
+		background-color: white;
+		box-shadow: -1px 1px 15px 0 rgba(0,0,0,0.1);
+		min-height: 280px;
+		@media (max-width: 768px) {
+			display: inline-block;
+			vertical-align: top;
+			margin-top: 0;
+			padding: 20px;
+			margin-bottom: 5px;
+			width: 80%;
+			min-height: 240px;
+		}
+	}
+	&-content{
+		@media (max-width: 768px) {
+			width: 100%;
+			text-align: center;
+			display: inline-block;
+			vertical-align: top;
+			font-size: initial;
+			text-align: center;
+			padding-top: 20px;
+		}
+	}
+	&-img{
+		max-width: 30%;
+		@media (max-width: 768px) {
+			width: 30%;
+			display: inline-block;
+			vertical-align: top;
+			font-size: initial;
+		}
+	}
+	&-status{
+		display: inline-block;
+		width: 100%;
+		text-align:center;
+		@media (max-width: 768px) {
+			
+		}
+		&.ok{
+			.massena-machine-status-bullet{
+				background-color: $status-ok;
+			}
+			.massena-machine-status-txt{
+				color: $status-ok;
+			}
+		}
+		&.nok{
+			.massena-machine-status-bullet{
+				background-color: $status-nok;
+			}
+			.massena-machine-status-txt{
+				color: $status-nok;
+			}
+		}
+		&-bullet{
+			width: 15px;
+			height:15px;
+			display: inline-block;
+			vertical-align: top;
+			border-radius: 50%;
+			background-color: #efefef;
+			vertical-align: middle;
+		}
+		&-txt{
+			font-size: 14px;
+			vertical-align: middle;
+			font-weight:bold;
+			padding-left: 5px;
+		}
+	}
+	&-add{
+		display: inline-block;
+		text-transform: uppercase;
+		font-size: 11px;
+		padding: 10px 15px;
+		background-color: $status-ok;
+		margin-top: 25px;
+		border-radius: 3px;
+		cursor:pointer;
+		color:white;
+		font-weight: 600;
+	}
+	&-modal{
+		position: absolute;
+		top:0;
+		left:0;
+		padding: 10px;
+		height: 100%;
+		width: 100%;
+		line-height: 280px;
+		display: inline-block;
+		background-color: rgba(0,0,0,0.7);
+		@media (max-width: 768px) {
+			font-size: initial;
+			line-height: 240px;
+		}
+		&-content{
+			display: inline-block;
+			vertical-align: middle;
+			width: 100%;
+			color: white;
+			line-height: normal;
+		}
+		&-title{
+			margin-top: 0;
+			font-weight:300;
+		}
+		&-input{
+			border: 1px solid #efefef;
+			padding: 7px 12px;	
+			background-color: rgba(255,255,255,0.8);
+			border-radius: 3px;
+			&:focus{
+				outline:none;
+				box-shadow:none;
+				background-color: rgba(255,255,255,1);
+			}
+		}
+		&-submit{
+			margin-top: 15px;
+			padding: 8px 12px;	
+			background-color: #51ca44;
+			border: 0;
+			border-radius: 3px;
+			color: white;
+			text-transform: uppercase;
+		}
+		&-close{
+			font-size: 12px;
+			cursor: pointer;
+			padding-left:5px;
+			text-decoration: underline;
+			display: block;
+			margin-top: 10px;
+		}
+	}
+}
+
+.timer{
+	margin-top: 25px;
+	color: $status-nok;
+	p{
+		font-weight: 300;
+		font-size: 20px;
+		margin: 0;
+	}
+}

@@ -1,65 +1,78 @@
 'use strict';
 
-let db
-let dbconnection = 'mongodb://reptilehaus_u:reptilehaus_p@ds035026.mlab.com:35026/die-reptil'
 const express = require('express')
 const app = express()
-const bodyParser = require('body-parser')
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-const MongoClient = require('mongodb').MongoClient
-
-app.use(bodyParser.urlencoded({ extended: true }))
-
-MongoClient.connect(dbconnection, (err, database) => {
-    if (err) return console.log(err)
-    db = database
-    app.listen(3000, () => {
-        console.log('MONGODB listening on 3000')
-    })
-})
+const bodyParser = require('body-parser');
+const fs = require('fs');
+var server = require('http').Server(app);
+var cors = require('cors');
+var path = require('path');
 
 
-function databaseStore(message) {
-    let storeData = { chatMessage: message, timestamp: new Date().getTime() }
-    db.collection('chatroom-chats').save(storeData, (err, result) => {
-        if (err) return console.log(err)
-        console.log('saved to database')
-    })
+/**
+ * Config 
+ */
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+
+app.use(express.static(__dirname + '/../dist'));
+app.use('/vendor', express.static(__dirname + '/node_modules/'));
+
+/**
+ * Create HTTP server.
+ */
+var port = process.env.PORT || 3000;        // set our port
+
+
+function updateJson(data){
+  fs.writeFile(__dirname+"/machines.json", JSON.stringify(data), function (err) {
+    if (err) return console.log(err);
+    console.log(JSON.stringify(data));
+    console.log('writing to machine.json');
+});
 }
 
-app.get('/', (req, res) => {
-    // res.sendFile(__dirname + '/index.html')
-    res.send('REPTILEHAUS Chat Server')
-})
+var router = express.Router();              
+
+router.get('/api/machines', function(req, res) {
+   var machines = JSON.parse(fs.readFileSync(__dirname+'/machines.json', 'utf8'));
+   res.setHeader('Content-Type', 'application/json');
+   res.send(machines);
+});
+
+router.put('/api/machines/', function(req, res) {
+    var newMachines = req.body;
+    updateJson(newMachines);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(newMachines);
+});
 
 
+app.use('/', router);
 
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname + '/../dist/index.html'));
+});
 
-io.on('connection', (socket) => {
+server.listen(port);
 
-    console.log('user connected');
+var io = require('socket.io').listen(server);
+
+io.sockets.on('connection', (socket) => {
+    console.log(io.emit());
+        console.log('socket ok');
+    // console.log(socket);
+    // console.log(this.socket);
+    // console.log(this.io)
 
     socket.on('disconnect', function() {
         console.log('user disconnected');
     });
 
-    socket.on('add-message', (message) => {
-        io.emit('message', { type: 'new-message', text: message });
-        // Function above that stores the message in the database
-        databaseStore(message)
+    socket.on('machineUpdate', (machines) => {
+        console.log('server machineUpdate');
+        io.emit('machineUpdate', machines);
     });
 
-});
-
-
-
-
-
-
-
-
-
-http.listen(5000, () => {
-    console.log('Server started on port 5000');
 });

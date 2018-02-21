@@ -1,0 +1,29 @@
+
+<div class="massena-machine" *ngFor="let machine of machines; let i='index'">
+	<div class="massena-machine-bg">
+		<img src="/assets/{{machine.img}}" alt="" class="massena-machine-img">
+		<div class="massena-machine-content">
+			<h2 class="massena-machine-title">{{machine.name}}</h2>
+			<div class="massena-machine-status" [ngClass]="machine.status">
+				<span class="massena-machine-status-bullet"></span>
+				<span class="massena-machine-status-txt">{{machine.statusText}}</span>
+				<timer *ngIf="machine.status == 'nok'" (timerEnded)="setMachineAvailable(i)" units="Minutes|Seconds" end="{{machine.deadline}}"></timer>
+			</div>
+			<span class="massena-machine-add" 
+			(click)="modals[machine.id] = !modals[machine.id]" *ngIf="machine.status == 'ok'">
+				Lancer une machine		
+			</span>
+		</div>
+		<div class="massena-machine-modal" *ngIf="machine.status == 'ok' && modals[machine.id]">
+			<form class="massena-machine-modal-content" (ngSubmit)="onSubmit(i)">
+				<h3 class="massena-machine-modal-title">Durée du cycle</h3>
+				<div class="massena-machine-modal-control">
+					<span class="massena-machine-modal-min">Min: </span>
+					<input required  [(ngModel)]="cycle" name="min" class="massena-machine-modal-input" type="number" min="1" max="120">
+					<input type="submit" class="massena-machine-modal-submit" value="valider" />
+					<span (click)="modals[machine.id] = !modals[machine.id]" class="massena-machine-modal-close">annuler</span>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

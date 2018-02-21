@@ -12,6 +12,12 @@
     "target": "es5",
     "typeRoots": [
       "../node_modules/@types"
-    ]
-  }
+  ]
+},
+"files":[
+    "../../node_modules/angular2-simple-countdown/countdown.ts",
+    "../../node_modules/angular2-simple-countdown/lib/countdown.ts",
+    "main.ts",
+    "polyfills.ts"
+]
 }

@@ -3,21 +3,26 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import {Timer} from "./utils/timer";
+
 
 import { AppComponent } from './app.component';
 
 import { ChatService } from './chat.service';
+import { MachineService } from './machine.service';
+
 
 import { ClientRoutingModule } from './app-routing.module';
 
-import { ChatComponent } from './chat/chat.component';
+import { MachineComponent } from './machine/machine.component';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatComponent,
-    HomeComponent
+    MachineComponent,
+    HomeComponent,
+    Timer
   ],
   imports: [
     BrowserModule,
@@ -25,7 +30,7 @@ import { HomeComponent } from './home/home.component';
     HttpModule,
     ClientRoutingModule    
   ],
-  providers: [ChatService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [ChatService, MachineService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

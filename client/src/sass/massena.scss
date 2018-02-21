@@ -1,0 +1,223 @@
+/* Fix user-agent */
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
+
+@import 'variables';
+@import 'machine';
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-font-smoothing: antialiased;
+	background-color: $bg;
+	font-family:"Roboto";
+}
+
+h1{
+	font-weight: 200;
+}
+
+.massena{
+	font-size: 0;
+	max-width: 700px;
+	margin: auto;
+}
+
+.massena-title{
+	text-align: center;
+	padding: 10% 0 0 0;
+	margin-bottom: 0;
+}
+
+.massena-subtitle{
+	text-align: center;
+	margin-top: 5px;
+	padding-bottom: 5%;
+	color: $dark-blue;
+	font-weight: 500;
+}
+
+#timer{
+	color: #e83737;
+	font-size: 25px;
+}
+
+
+
+select{
+	border-radius: 0;
+	display: block;
+	width: 200px;
+	height: 30px;
+	margin: 0 auto;
+	margin-top: 15px;
+	background-color: transparent;
+	color:white;
+	border-bottom: 2px solid white;
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style: none;
+	word-wrap: break-word;
+}
+
+/* Pages */
+
+.pages {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.page {
+	height: 100%;
+	position: absolute;
+	width: 100%;
+}
+
+/* Login Page */
+
+.login.page {
+	background-color: #000;
+}
+
+.login.page .form {
+	height: 100px;
+	margin-top: -100px;
+	position: absolute;
+
+	text-align: center;
+	top: 50%;
+	width: 100%;
+}
+
+.login.page .form .usernameInput {
+	background-color: transparent;
+	border: none;
+	border-bottom: 2px solid #fff;
+	outline: none;
+	padding-bottom: 15px;
+	text-align: center;
+	width: 400px;
+}
+
+.login.page .title {
+	font-size: 200%;
+}
+
+.login.page .usernameInput {
+	font-size: 200%;
+	letter-spacing: 3px;
+}
+
+.login.page .title, .login.page .usernameInput {
+	color: #fff;
+	font-weight: 100;
+}
+
+/* Chat page */
+
+.chat.page {
+	display: none;
+}
+
+/* Font */
+
+.messages {
+	font-size: 150%;
+}
+
+.message{
+	padding: 20px 0;
+}
+
+.inputMessage {
+	font-size: 100%;
+}
+
+.log {
+	color: gray;
+	font-size: 60%;
+	margin-top: 3px;
+	text-align: center;
+}
+
+/* Messages */
+
+.chatArea {
+	height: 100%;
+	padding-bottom: 60px;
+}
+
+.messages {
+	height: 100%;
+	margin: 0;
+	overflow-y: scroll;
+	padding: 10px 20px 10px 20px;
+}
+
+.message.typing .messageBody {
+	color: gray;
+	background-color: white;
+}
+
+.messageBody{
+	padding: 10px;
+	font-size: 19px;
+	background-color: white;
+	position: relative;
+	font-size: 17px;
+}
+
+.messageBody:before{
+	content:'';
+	content: '';
+	width: 0;
+	height: 0;
+	left: -8px;
+	top: 0;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+	border-right: 10px solid white;
+	position: absolute;
+	bottom: 0;
+	margin: auto;
+}
+
+.username {
+	font-weight: 700;
+	overflow: hidden;
+	padding-right: 15px;
+	text-align: left;
+	width: 150px;
+	display: inline-block;
+	vertical-align: middle;
+	font-weight: 100;
+	font-size: 20px;
+}
+
+/* Input */
+
+.inputMessage {
+	bottom: 0;
+	height: 60px;
+	left: 0;
+	outline: none;
+	padding-left: 10px;
+	position: absolute;
+	right: 0;
+	width: 100%;
+}
+
+.username-lang{
+	color:black;
+	font-size: 10px;
+}
