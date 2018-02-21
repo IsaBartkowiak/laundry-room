@@ -345,6 +345,7 @@ var MachineComponent = /** @class */ (function () {
         this.MachineService.updateMachines(this.machines)
             .subscribe(function (machines) {
             _this.socket.emit('machineUpdate', _this.machines);
+            _this.modals[i] = !_this.modals[i];
         });
     };
     MachineComponent.prototype.getData = function () {
