@@ -284,7 +284,7 @@ var MachineService = /** @class */ (function () {
 /***/ "./client/src/app/machine/machine.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"massena-machine\" *ngFor=\"let machine of machines; let i='index'\">\n\t<div class=\"massena-machine-bg\">\n\t\t<img src=\"/assets/{{machine.img}}\" alt=\"\" class=\"massena-machine-img\">\n\t\t<div class=\"massena-machine-content\">\n\t\t\t<h2 class=\"massena-machine-title\">{{machine.name}}</h2>\n\t\t\t<div class=\"massena-machine-status\" [ngClass]=\"machine.status\">\n\t\t\t\t<span class=\"massena-machine-status-bullet\"></span>\n\t\t\t\t<span class=\"massena-machine-status-txt\">{{machine.statusText}}</span>\n\t\t\t\t<timer *ngIf=\"machine.status == 'nok'\" (timerEnded)=\"setMachineAvailable(i)\" units=\"Minutes|Seconds\" end=\"{{machine.deadline}}\"></timer>\n\t\t\t</div>\n\t\t\t<span class=\"massena-machine-add\" \n\t\t\t(click)=\"modals[machine.id] = !modals[machine.id]\" *ngIf=\"machine.status == 'ok'\">\n\t\t\t\tLancer une machine\t\t\n\t\t\t</span>\n\t\t</div>\n\t\t<div class=\"massena-machine-modal\" *ngIf=\"machine.status == 'ok' && modals[machine.id]\">\n\t\t\t<form class=\"massena-machine-modal-content\" (ngSubmit)=\"onSubmit(i)\">\n\t\t\t\t<h3 class=\"massena-machine-modal-title\">Durée du cycle</h3>\n\t\t\t\t<div class=\"massena-machine-modal-control\">\n\t\t\t\t\t<span class=\"massena-machine-modal-min\">Min: </span>\n\t\t\t\t\t<input required  [(ngModel)]=\"cycle\" name=\"min\" class=\"massena-machine-modal-input\" type=\"number\" min=\"1\" max=\"120\">\n\t\t\t\t\t<input type=\"submit\" class=\"massena-machine-modal-submit\" value=\"valider\" />\n\t\t\t\t\t<span (click)=\"modals[machine.id] = !modals[machine.id]\" class=\"massena-machine-modal-close\">annuler</span>\n\t\t\t\t</div>\n\t\t\t</form>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "\n<div class=\"massena-machine\" *ngFor=\"let machine of machines; let i='index'\">\n\t<div class=\"massena-machine-bg\">\n\t\t<img src=\"/assets/{{machine.img}}\" alt=\"\" class=\"massena-machine-img\">\n\t\t<div class=\"massena-machine-content\">\n\t\t\t<h2 class=\"massena-machine-title\">{{machine.name}}</h2>\n\t\t\t<div class=\"massena-machine-status\" [ngClass]=\"machine.status\">\n\t\t\t\t<span class=\"massena-machine-status-bullet\"></span>\n\t\t\t\t<span class=\"massena-machine-status-txt\">{{machine.statusText}}</span>\n\t\t\t\t<timer *ngIf=\"machine.status == 'nok'\" (timerEnded)=\"setMachineAvailable(i)\" units=\"Minutes|Seconds\" end=\"{{machine.deadline}}\"></timer>\n\t\t\t</div>\n\t\t\t<span class=\"massena-machine-add\" \n\t\t\t[(click)]=\"modals[machine.id] = !modals[machine.id]\" *ngIf=\"machine.status == 'ok'\">\n\t\t\t\tLancer une machine\t\t\n\t\t\t</span>\n\t\t</div>\n\t\t<div class=\"massena-machine-modal\" *ngIf=\"machine.status == 'ok' && modals[machine.id]\">\n\t\t\t<form class=\"massena-machine-modal-content\" (ngSubmit)=\"onSubmit(i)\">\n\t\t\t\t<h3 class=\"massena-machine-modal-title\">Durée du cycle</h3>\n\t\t\t\t<div class=\"massena-machine-modal-control\">\n\t\t\t\t\t<span class=\"massena-machine-modal-min\">Min: </span>\n\t\t\t\t\t<input required  [(ngModel)]=\"cycle\" name=\"min\" class=\"massena-machine-modal-input\" type=\"number\" min=\"1\" max=\"120\">\n\t\t\t\t\t<input type=\"submit\" class=\"massena-machine-modal-submit\" value=\"valider\" />\n\t\t\t\t\t<span (click)=\"modals[machine.id] = !modals[machine.id]\" class=\"massena-machine-modal-close\">annuler</span>\n\t\t\t\t</div>\n\t\t\t</form>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -333,7 +333,7 @@ var MachineComponent = /** @class */ (function () {
         this.MachineService.updateMachines(this.machines)
             .subscribe(function (machines) {
             _this.socket.emit('machineUpdate', _this.machines);
-            _this.modals[i] = !_this.modals[i];
+            _this.modals[_this.machines[i].id] = !_this.modals[_this.machines[i].id];
         });
     };
     MachineComponent.prototype.setMachineAvailable = function (i) {
@@ -345,7 +345,7 @@ var MachineComponent = /** @class */ (function () {
         this.MachineService.updateMachines(this.machines)
             .subscribe(function (machines) {
             _this.socket.emit('machineUpdate', _this.machines);
-            _this.modals[i] = !_this.modals[i];
+            _this.modals[_this.machines[i].id] = false;
         });
     };
     MachineComponent.prototype.getData = function () {
