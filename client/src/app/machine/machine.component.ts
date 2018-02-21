@@ -30,7 +30,7 @@ export class MachineComponent implements OnInit, OnDestroy {
     this.machines[i].deadline = toTime;
     this.machines[i].status = "nok";
     this.machines[i].time = Date.now();
-    this.machines[i].statusText = "Utilisé";
+    this.machines[i].statusText = "En cours";
     //update machines
     this.MachineService.updateMachines(this.machines)
     .subscribe(machines => {
