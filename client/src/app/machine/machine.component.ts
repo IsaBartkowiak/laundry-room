@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { ChatService } from '../chat.service';
 import { MachineService } from '../machine.service';
 import * as io from 'socket.io-client';
 
@@ -19,7 +18,7 @@ export class MachineComponent implements OnInit, OnDestroy {
   message;
   private socket: SocketIOClient.Socket;
 
-  constructor(private chatService:ChatService, private MachineService:MachineService) {
+  constructor(private MachineService:MachineService) {
     this.socket = io();
     this.socket.on('machineUpdate', machines => {
       this.getData();

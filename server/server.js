@@ -28,7 +28,6 @@ var port = process.env.PORT || 3000;        // set our port
 function updateJson(data){
   fs.writeFile(__dirname+"/machines.json", JSON.stringify(data), function (err) {
     if (err) return console.log(err);
-    console.log(JSON.stringify(data));
     console.log('writing to machine.json');
 });
 }
@@ -60,11 +59,7 @@ server.listen(port);
 var io = require('socket.io').listen(server);
 
 io.sockets.on('connection', (socket) => {
-    console.log(io.emit());
-        console.log('socket ok');
-    // console.log(socket);
-    // console.log(this.socket);
-    // console.log(this.io)
+    console.log('socket ok');
 
     socket.on('disconnect', function() {
         console.log('user disconnected');

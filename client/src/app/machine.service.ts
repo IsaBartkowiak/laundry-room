@@ -4,10 +4,11 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class MachineService {
-  private url = 'http://localhost:3000';  
+  //private url = 'https://massena-wash.herokuapp.com';
+  private url = 'http://localhost:3000';
 
   constructor(private http: Http) {
-  	
+
   }
 
   // Get all machines

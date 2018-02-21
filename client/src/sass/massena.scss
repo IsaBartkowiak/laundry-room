@@ -68,6 +68,21 @@ ul {
 	word-wrap: break-word;
 }
 
+.loader{
+	&-container{
+		width: 100%;
+		text-align: center;
+		height: 100vh;
+		line-height:100vh;
+		display: inline-block;
+	}
+	&-txt{
+		color: $dark-blue;
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+
 /* Pages */
 
 .pages {

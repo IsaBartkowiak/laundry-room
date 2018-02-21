@@ -8,7 +8,6 @@ import {Timer} from "./utils/timer";
 
 import { AppComponent } from './app.component';
 
-import { ChatService } from './chat.service';
 import { MachineService } from './machine.service';
 
 
@@ -30,7 +29,7 @@ import { HomeComponent } from './home/home.component';
     HttpModule,
     ClientRoutingModule    
   ],
-  providers: [ChatService, MachineService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [MachineService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
