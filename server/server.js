@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use(express.static(__dirname + '/../dist'));
-app.use('/vendor', express.static(__dirname + '/node_modules/'));
+app.use(express.static(path.join(__dirname, '../dist')));
+app.use('/vendor', express.static(path.join(__dirname, '/node_modules')));
 
 /**
  * Create HTTP server.
