@@ -184,7 +184,7 @@ var AppModule = /** @class */ (function () {
 /***/ "./client/src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1 class=\"massena-title\">Laverie Massena</h1>\n<h2 class=\"massena-subtitle\">Gestion des disponibilités</h2>\n\n<div class=\"massena\">\n\t<app-machine></app-machine>\n</div>"
+module.exports = "<h1 class=\"massena-title\">Laundry room</h1>\n<h2 class=\"massena-subtitle\">Availabilities</h2>\n\n<div class=\"massena\">\n\t<app-machine></app-machine>\n</div>"
 
 /***/ }),
 
